@@ -14,12 +14,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            RetoVentanasTheme {
-                HomeScreen()
-            }
+            HomeScreen()
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
