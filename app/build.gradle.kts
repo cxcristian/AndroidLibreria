@@ -5,9 +5,7 @@ plugins {
 
 android {
     namespace = "com.sena.retoventanas"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.sena.retoventanas"
@@ -38,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.navigation.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
