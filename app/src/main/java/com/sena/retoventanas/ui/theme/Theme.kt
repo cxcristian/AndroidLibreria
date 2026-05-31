@@ -75,8 +75,8 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun RetoVentanasTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    darkTheme: Boolean = false,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

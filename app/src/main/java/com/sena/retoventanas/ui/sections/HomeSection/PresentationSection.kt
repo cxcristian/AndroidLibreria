@@ -15,8 +15,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.sena.retoventanas.R
 import com.sena.retoventanas.ui.theme.Grey600
 import com.sena.retoventanas.ui.theme.Purple50
@@ -24,9 +26,10 @@ import com.sena.retoventanas.ui.theme.Purple500
 import com.sena.retoventanas.ui.theme.Purple700
 
 @Composable
-fun PresentationSection() {
+fun PresentationSection(navController: NavController) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxWidth().padding(16.dp)
     ) {
         Box(
@@ -34,11 +37,12 @@ fun PresentationSection() {
             modifier = Modifier
                 .size(150.dp)
                 .clip(CircleShape)
-                .background(Purple50.copy(alpha = 0.6f))
+                .background(Purple50.copy(alpha = 1f))
         ) {
             Image(
                 painter = painterResource(id = R.drawable.main_home),
-                contentDescription = ""
+                contentDescription = "",
+                modifier = Modifier.fillMaxSize()
             )
         }
 
@@ -47,22 +51,27 @@ fun PresentationSection() {
         Text(
             text = "¡Bienvenido a tu Biblioteca!",
             color = Purple700,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
+            fontSize = 30.sp,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
         Text(
             text = "Descubre, aprende y reserva tus libros favoritos",
             color = Grey600,
-            fontSize = 14.sp
+            fontSize = 20.sp,
+            textAlign = TextAlign.Center
+
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Button(
-            onClick = {},
+        Button(modifier = Modifier.fillMaxWidth()
+            .height(60.dp),
+            onClick = {navController.navigate("listBook")},
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Purple500,
@@ -72,10 +81,10 @@ fun PresentationSection() {
             Image(
                 painter = painterResource(R.drawable.book),
                 contentDescription = "",
-                modifier = Modifier.size(20.dp)
+                modifier = Modifier.size(40.dp).align(Alignment.CenterVertically)
             )
             Spacer(modifier = Modifier.width(6.dp))
-            Text(text = "Ver Libros")
+            Text(text = "Ver Libros", fontSize = 30.sp)
         }
     }
 }
