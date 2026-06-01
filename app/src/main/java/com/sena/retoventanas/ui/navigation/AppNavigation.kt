@@ -9,8 +9,11 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.sena.retoventanas.ui.screens.ConfirmationScreen
 import com.sena.retoventanas.ui.screens.DetailScreen
+import com.sena.retoventanas.ui.screens.DetalleReservaScreen
 import com.sena.retoventanas.ui.screens.HomeScreen
 import com.sena.retoventanas.ui.screens.ListBookScreen
+import com.sena.retoventanas.ui.screens.MisReservasScreen
+import com.sena.retoventanas.ui.screens.RenovarScreen
 
 @Composable
 fun AppNavigation(modifier: Modifier){
@@ -48,6 +51,31 @@ fun AppNavigation(modifier: Modifier){
             ){ backStackEntry ->
             val nombre = backStackEntry.arguments?.getString("nombre")?:""
             ConfirmationScreen(navController, nombre)
+        }
+        composable (route ="reserva"){
+            MisReservasScreen(navController)
+        }
+        composable(
+            route = "renovar/{fecha}",
+            arguments = listOf(navArgument("fecha") { type = NavType.StringType })
+        ){ backStackEntry ->
+            val fecha = backStackEntry.arguments?.getString("fecha") ?: ""
+            RenovarScreen(navController, fecha)
+        }
+        composable(
+            route = "detalle/{nombre}/{autor}/{Nimage}/{fecha}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("autor") { type = NavType.StringType },
+                navArgument("Nimage") { type = NavType.IntType },
+                navArgument("fecha") { type = NavType.StringType }
+            )
+        ){ backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
+            val autor = backStackEntry.arguments?.getString("autor") ?: ""
+            val Nimage = backStackEntry.arguments?.getInt("Nimage") ?: 0
+            val fecha = backStackEntry.arguments?.getString("fecha") ?: ""
+            DetalleReservaScreen(navController, nombre, autor, Nimage, fecha)
         }
     }
 }
