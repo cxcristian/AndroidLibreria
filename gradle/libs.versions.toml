@@ -8,7 +8,7 @@ lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.13.0"
 kotlin = "2.0.21"
 composeBom = "2024.09.00"
-nav_version = "2.9.8"
+nav_version = "2.8.5"
 
 [libraries]
 navigation-compose ={group = "androidx.navigation", name ="navigation-compose", version.ref = "nav_version"}

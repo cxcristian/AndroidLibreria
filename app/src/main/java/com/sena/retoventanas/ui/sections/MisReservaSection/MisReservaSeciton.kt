@@ -29,7 +29,7 @@ fun MisReservaSection(
     categoria: String = "",
     fecha: String = ""
 ) {
-    val fechaReserva = "25/05/2026"
+    val fechaReserva = "25-05-2026"
     Scaffold(
         topBar = {
             TopAppBar(
@@ -72,7 +72,7 @@ fun MisReservaSection(
 
             Row (modifier = Modifier.fillMaxWidth()) {
                 Image(
-                    painter = painterResource(R.drawable.pila_libros),
+                    painter = painterResource(R.drawable.pila_libro),
                     contentDescription = "",
                     modifier = Modifier.size(20.dp).align(Alignment.CenterVertically)
                 )

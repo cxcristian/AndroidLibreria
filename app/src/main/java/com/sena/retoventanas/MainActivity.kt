@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.ui.Modifier
 import com.sena.retoventanas.ui.navigation.AppNavigation
-import com.sena.retoventanas.ui.screens.ContadorScreen
 import com.sena.retoventanas.ui.theme.RetoVentanasTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,8 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RetoVentanasTheme {
-                //AppNavigation(modifier = Modifier)
-                ContadorScreen()
+                AppNavigation(modifier = Modifier)
             }
         }
     }

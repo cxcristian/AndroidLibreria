@@ -177,7 +177,7 @@ fun DetalleReservaSection(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Button(
-                    onClick = { navController.navigate("renovar/$fecha") },
+                    onClick = { navController.navigate("renovar/$nombre/$autor/$Nimage/$fecha") },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4CAF50))

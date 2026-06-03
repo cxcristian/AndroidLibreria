@@ -1,5 +1,6 @@
 package com.sena.retoventanas.ui.navigation
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavType
@@ -13,6 +14,7 @@ import com.sena.retoventanas.ui.screens.DetalleReservaScreen
 import com.sena.retoventanas.ui.screens.HomeScreen
 import com.sena.retoventanas.ui.screens.ListBookScreen
 import com.sena.retoventanas.ui.screens.MisReservasScreen
+import com.sena.retoventanas.ui.screens.RenovacionExitosaScreen
 import com.sena.retoventanas.ui.screens.RenovarScreen
 
 @Composable
@@ -21,6 +23,7 @@ fun AppNavigation(modifier: Modifier){
     NavHost(
         navController = navController,
         startDestination = "home",
+        modifier = modifier.fillMaxSize()
     ){
         composable(route = "home"){
             HomeScreen(navController)
@@ -82,11 +85,36 @@ fun AppNavigation(modifier: Modifier){
             MisReservasScreen(navController, nombre, intImage, autor, descripcion, categoria, fecha)
         }
         composable(
-            route = "renovar/{fecha}",
-            arguments = listOf(navArgument("fecha") { type = NavType.StringType })
+            route = "renovar/{nombre}/{autor}/{Nimage}/{fecha}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("autor") { type = NavType.StringType },
+                navArgument("Nimage") { type = NavType.IntType },
+                navArgument("fecha") { type = NavType.StringType }
+            )
         ){ backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
+            val autor = backStackEntry.arguments?.getString("autor") ?: ""
+            val Nimage = backStackEntry.arguments?.getInt("Nimage") ?: 0
             val fecha = backStackEntry.arguments?.getString("fecha") ?: ""
-            RenovarScreen(navController, fecha)
+            RenovarScreen(navController, nombre, autor, Nimage, fecha)
+        }
+        composable(
+            route = "renovacionExitosa/{nombre}/{autor}/{Nimage}/{fecha}/{nuevaFecha}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("autor") { type = NavType.StringType },
+                navArgument("Nimage") { type = NavType.IntType },
+                navArgument("fecha") { type = NavType.StringType },
+                navArgument("nuevaFecha") { type = NavType.StringType }
+            )
+        ){ backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
+            val autor = backStackEntry.arguments?.getString("autor") ?: ""
+            val Nimage = backStackEntry.arguments?.getInt("Nimage") ?: 0
+            val fecha = backStackEntry.arguments?.getString("fecha") ?: ""
+            val nuevaFecha = backStackEntry.arguments?.getString("nuevaFecha") ?: ""
+            RenovacionExitosaScreen(navController, nombre, autor, Nimage, fecha, nuevaFecha)
         }
         composable(
             route = "detalle/{nombre}/{autor}/{Nimage}/{fecha}",

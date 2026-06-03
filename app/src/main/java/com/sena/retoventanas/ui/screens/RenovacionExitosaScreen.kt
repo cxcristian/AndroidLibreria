@@ -7,13 +7,20 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.sena.retoventanas.ui.sections.RenovarSection.RenovarSection
+import com.sena.retoventanas.ui.sections.RenovacionExitosaSection.RenovacionExitosaSection
 
 @Composable
-fun RenovarScreen(navController: NavController, nombre: String, autor: String, Nimage: Int, fecha: String) {
+fun RenovacionExitosaScreen(
+    navController: NavController,
+    nombre: String,
+    autor: String,
+    Nimage: Int,
+    fecha: String,
+    nuevaFecha: String
+) {
     Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
-            RenovarSection(navController, nombre, autor, Nimage, fecha)
+            RenovacionExitosaSection(navController, nombre, autor, Nimage, fecha, nuevaFecha)
         }
     }
 }
