@@ -192,7 +192,7 @@ fun DetalleReservaSection(
                 }
 
                 Button(
-                    onClick = { navController.navigate("reserva") },
+                    onClick = { navController.navigate("reserva?nombre=$nombre&intImage=$Nimage&autor=$autor&descripcion=&categoria=&fecha=$fecha") },
                     modifier = Modifier.weight(1f),
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF44336))
