@@ -109,7 +109,7 @@ fun DetailSection(
         Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {navController.navigate("confirmation/$nombre")},
+            onClick = { navController.navigate("confirmation/$nombre/$intImage/$autor/$descripcion/$categoria") },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)

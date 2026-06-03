@@ -10,10 +10,17 @@ import androidx.navigation.NavController
 import com.sena.retoventanas.ui.sections.ConfirmationSection.ConfirmationSection
 
 @Composable
-fun ConfirmationScreen(navController: NavController, nombre: String) {
+fun ConfirmationScreen(
+    navController: NavController,
+    nombre: String,
+    intImage: Int,
+    autor: String,
+    descripcion: String,
+    categoria: String
+) {
     Scaffold(modifier = Modifier.fillMaxSize()) { paddingValues ->
         Column(modifier = Modifier.padding(paddingValues)) {
-            ConfirmationSection(navController, nombre)
+            ConfirmationSection(navController, nombre, intImage, autor, descripcion, categoria)
         }
     }
 }

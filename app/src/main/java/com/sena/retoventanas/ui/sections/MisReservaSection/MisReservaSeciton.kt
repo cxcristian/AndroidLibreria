@@ -20,16 +20,16 @@ import com.sena.retoventanas.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MisReservaSection(navController: NavController){
-    val libros = listOf(
-        listOf<Any>(
-            "No tengo boca y debo gritar",
-            R.drawable.no_tengo_boca,
-            "Harland Ellison",
-            "Relato oscuro y perturbador de ciencia ficción",
-            "Ciencia Ficción"
-        )
-    )
+fun MisReservaSection(
+    navController: NavController,
+    nombre: String = "",
+    intImage: Int = 0,
+    autor: String = "",
+    descripcion: String = "",
+    categoria: String = "",
+    fecha: String = ""
+) {
+    val fechaReserva = "25/05/2026"
     Scaffold(
         topBar = {
             TopAppBar(
@@ -86,11 +86,7 @@ fun MisReservaSection(navController: NavController){
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            libros.forEach { libro ->
-                val nombre = libro[0] as String
-                val imagen = libro[1] as Int
-                val autor = libro[2] as String
-
+            if (nombre.isNotEmpty()) {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
@@ -103,7 +99,7 @@ fun MisReservaSection(navController: NavController){
                             verticalAlignment = Alignment.Top
                         ) {
                             Image(
-                                painter = painterResource(id = imagen),
+                                painter = painterResource(id = intImage),
                                 contentDescription = nombre,
                                 modifier = Modifier.size(100.dp)
                             )
@@ -132,7 +128,7 @@ fun MisReservaSection(navController: NavController){
                                     color = Color.Black
                                 )
                                 Text(
-                                    text = "12/05/2026",
+                                    text = fechaReserva,
                                     fontSize = 14.sp,
                                     color = Color.Black
                                 )
@@ -167,7 +163,7 @@ fun MisReservaSection(navController: NavController){
                         Spacer(modifier = Modifier.height(12.dp))
 
                         Button(
-                            onClick = { navController.navigate("Detalle/$nombre/$imagen/$autor") },
+                            onClick = { navController.navigate("detalle/$nombre/$autor/$intImage/$fechaReserva") },
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(8.dp),
                             colors = ButtonDefaults.buttonColors(

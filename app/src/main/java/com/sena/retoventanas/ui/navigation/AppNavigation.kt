@@ -46,14 +46,40 @@ fun AppNavigation(modifier: Modifier){
             DetailScreen(navController, nombre, intImage, autor, descripcion, categoria)
         }
         composable(
-            route = "confirmation/{nombre}",
-            arguments = listOf(navArgument("nombre") { type = NavType.StringType })
-            ){ backStackEntry ->
-            val nombre = backStackEntry.arguments?.getString("nombre")?:""
-            ConfirmationScreen(navController, nombre)
+            route = "confirmation/{nombre}/{intImage}/{autor}/{descripcion}/{categoria}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType },
+                navArgument("intImage") { type = NavType.IntType },
+                navArgument("autor") { type = NavType.StringType },
+                navArgument("descripcion") { type = NavType.StringType },
+                navArgument("categoria") { type = NavType.StringType }
+            )
+        ){ backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
+            val intImage = backStackEntry.arguments?.getInt("intImage") ?: 0
+            val autor = backStackEntry.arguments?.getString("autor") ?: ""
+            val descripcion = backStackEntry.arguments?.getString("descripcion") ?: ""
+            val categoria = backStackEntry.arguments?.getString("categoria") ?: ""
+            ConfirmationScreen(navController, nombre, intImage, autor, descripcion, categoria)
         }
-        composable (route ="reserva"){
-            MisReservasScreen(navController)
+        composable(
+            route = "reserva?nombre={nombre}&intImage={intImage}&autor={autor}&descripcion={descripcion}&categoria={categoria}&fecha={fecha}",
+            arguments = listOf(
+                navArgument("nombre") { type = NavType.StringType; defaultValue = "" },
+                navArgument("intImage") { type = NavType.IntType; defaultValue = 0 },
+                navArgument("autor") { type = NavType.StringType; defaultValue = "" },
+                navArgument("descripcion") { type = NavType.StringType; defaultValue = "" },
+                navArgument("categoria") { type = NavType.StringType; defaultValue = "" },
+                navArgument("fecha") { type = NavType.StringType; defaultValue = "" }
+            )
+        ){ backStackEntry ->
+            val nombre = backStackEntry.arguments?.getString("nombre") ?: ""
+            val intImage = backStackEntry.arguments?.getInt("intImage") ?: 0
+            val autor = backStackEntry.arguments?.getString("autor") ?: ""
+            val descripcion = backStackEntry.arguments?.getString("descripcion") ?: ""
+            val categoria = backStackEntry.arguments?.getString("categoria") ?: ""
+            val fecha = backStackEntry.arguments?.getString("fecha") ?: ""
+            MisReservasScreen(navController, nombre, intImage, autor, descripcion, categoria, fecha)
         }
         composable(
             route = "renovar/{fecha}",

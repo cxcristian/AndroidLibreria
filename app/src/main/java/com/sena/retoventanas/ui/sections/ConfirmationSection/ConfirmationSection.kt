@@ -31,7 +31,15 @@ import androidx.navigation.NavController
 import com.sena.retoventanas.R
 
 @Composable
-fun ConfirmationSection(navController: NavController, nombre: String, modifier: Modifier = Modifier) {
+fun ConfirmationSection(
+    navController: NavController,
+    nombre: String,
+    intImage: Int,
+    autor: String,
+    descripcion: String,
+    categoria: String,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -111,7 +119,7 @@ fun ConfirmationSection(navController: NavController, nombre: String, modifier: 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Button(
-                    onClick = { navController.navigate("home") },
+                    onClick = { navController.navigate("reserva?nombre=$nombre&intImage=$intImage&autor=$autor&descripcion=$descripcion&categoria=$categoria&fecha=15-06-2026") },
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Green,
