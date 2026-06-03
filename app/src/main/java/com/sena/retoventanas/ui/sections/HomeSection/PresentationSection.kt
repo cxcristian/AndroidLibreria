@@ -86,5 +86,25 @@ fun PresentationSection(navController: NavController) {
             Spacer(modifier = Modifier.width(6.dp))
             Text(text = "Ver Libros", fontSize = 30.sp)
         }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(
+            modifier = Modifier.fillMaxWidth().height(60.dp),
+            onClick = { navController.navigate("reserva") },
+            shape = RoundedCornerShape(16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF4CAF50),
+                contentColor = Color.White
+            )
+        ) {
+            Image(
+                painter = painterResource(R.drawable.book2),
+                contentDescription = "",
+                modifier = Modifier.size(40.dp).align(Alignment.CenterVertically)
+            )
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(text = "Mis Reservas", fontSize = 30.sp)
+        }
     }
 }

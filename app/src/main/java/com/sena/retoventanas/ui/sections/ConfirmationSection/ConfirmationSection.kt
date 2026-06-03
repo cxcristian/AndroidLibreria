@@ -118,21 +118,45 @@ fun ConfirmationSection(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Button(
-                    onClick = { navController.navigate("reserva?nombre=$nombre&intImage=$intImage&autor=$autor&descripcion=$descripcion&categoria=$categoria&fecha=15-06-2026") },
+                Row(
                     modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Green,
-                        contentColor = Color.White
-                    )
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    Image(
-                        painter = painterResource(R.drawable.home),
-                        contentDescription = "",
-                        modifier = Modifier.size(15.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = "Inicio", fontSize = 25.sp, fontWeight = FontWeight.Bold)
+                    Button(
+                        onClick = { navController.navigate("home") },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF4CAF50),
+                            contentColor = Color.White
+                        )
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.home),
+                            contentDescription = "",
+                            modifier = Modifier.size(15.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = "Inicio", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    }
+
+                    Button(
+                        onClick = { navController.navigate("reserva?nombre=$nombre&intImage=$intImage&autor=$autor&descripcion=$descripcion&categoria=$categoria&fecha=15-06-2026") },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(8.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF9C27B0),
+                            contentColor = Color.White
+                        )
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.book2),
+                            contentDescription = "",
+                            modifier = Modifier.size(15.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = "Mis Reservas", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    }
                 }
             }
         }
